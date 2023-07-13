@@ -1,0 +1,95 @@
+Q. Explain how you would handle missing data in a given dataset and provide a code snippet demonstrating this.
+
+Handling missing data in a dataset is an important step in the data preprocessing phase. We can use several strategies to handle missing data, such as removing rows or columns with missing values, imputing missing values with statistical methods (e.g., mean, median, mode), or using advanced techniques like regression or machine learning models to predict missing values. The choice of strategy depends on the nature and extent of missingness in our dataset.
+
+Here's a code snippet demonstrating how to handle missing data using the pandas library in Python:
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('dataset.csv')
+
+# Check for missing values #The isnull().sum() method is used to check the number of missing values in each column.
+print(df.isnull().sum())
+
+# Option 1: Remove rows or columns with missing values
+df_dropna = df.dropna()  # Remove rows with any missing value
+df_dropna = df.dropna(axis=1)  # Remove columns with any missing value
+
+# Option 2: Representing missing values with mean
+df_fillna_mean = df.fillna(df.mean())
+
+# Option 3: Representing missing values with median
+df_fillna_median = df.fillna(df.median())
+
+# Option 4: Representing missing values with mode
+df_fillna_mode = df.fillna(df.mode().iloc[0])
+
+# Option 5: Representing missing values using forward fill
+df_ffill = df.fillna(method='ffill')
+
+# Option 6: Representing missing values using backward fill
+df_bfill = df.fillna(method='bfill')
+
+# Option 7: Representing missing values using linear interpolation
+df_interpolate = df.interpolate(method='linear')
+
+
+Machine Learning Techniques to handle missing data in Dataset. Here is a code snippet that explains how to handle missing data using a machine-learning method, for imputing missing values(In my case I have used Random Forest, one can choose any method depending on the dataset):
+
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+
+# Load the dataset
+df = pd.read_csv('dataset.csv')
+
+# Identify columns with missing values
+columns_with_missing = df.columns[df.isnull().any()].tolist()
+
+# Separate columns with missing values and without missing values
+df_missing = df[columns_with_missing]
+df_non_missing = df.drop(columns_with_missing, axis=1)
+
+# Create a function to impute missing values using Random Forest
+def impute_missing_values(df_missing, df_non_missing):
+    # Split the data into complete and incomplete rows
+    missing_data = df_missing[df_missing.isnull().any(axis=1)]
+    non_missing_data = df_missing.dropna()
+
+    # Create features and target variables
+    X_train = non_missing_data.dropna(axis=1)
+    y_train = non_missing_data[columns_with_missing]
+
+    # Train Random Forest model
+    model = RandomForestRegressor()
+    model.fit(X_train, y_train)
+
+    # Predict missing values
+    imputed_values = model.predict(missing_data.dropna(axis=1))
+
+    # Create a DataFrame with imputed values
+    imputed_df = pd.DataFrame(imputed_values, columns=columns_with_missing)
+
+    # Concatenate complete and imputed data
+    df_imputed = pd.concat([non_missing_data, imputed_df], axis=0)
+
+    # Merge with non-missing data
+    df_final = pd.concat([df_non_missing, df_imputed], axis=1)
+
+    return df_final
+
+# Impute missing values using Random Forest
+df_imputed = impute_missing_values(df_missing, df_non_missing)
+
+# Check for missing values in the imputed DataFrame
+print(df_imputed.isnull().sum())
+
+Explanation of the above code snippet:
+
+In this code snippet, we first identify the columns with missing values using the 'isnull().any()' method. Then, we separate the columns with missing values (df_missing) from the columns without missing values (df_non_missing).
+
+The 'impute_missing_values' function takes the 'df_missing' and 'df_non_missing' as inputs.
+
+It splits the data into complete and incomplete rows, uses the non-missing data to train a Random Forest model, and predicts the missing values using the trained model. Finally, it combines the complete and imputed data to create the 'df_imputed' DataFrame.
+
+Note:-You can modify this code snippet to suit your specific dataset and requirements, such as choosing a different machine learning algorithm or adjusting the preprocessing steps before training the model.
+

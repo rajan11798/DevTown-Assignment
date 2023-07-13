@@ -1,0 +1,11 @@
+Voice Sentiment Analysis
+
+In this project, I have predicted the sentiments of the voice, divide the dataset into 8 different classes and then predict them.
+
+This project has 3 steps data preprocessing, model implementation(training) and model evaluation.
+
+In data preprocessing, I have extracted the feature(Loudness, Tempo, Beat time, MFCC, Zero crossing, Spectral roll-off, Chroma, and Pitch) of each audio file that is essential for the prediction.
+
+Created a data frame for all these features. After that replace emotions with labels and train the model.
+
+I have used SVC, Logistic Regression, Random Forest and Decision Tree, amongst all I got the best result by RandomForest.

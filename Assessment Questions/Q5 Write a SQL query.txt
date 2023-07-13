@@ -1,0 +1,13 @@
+Q5 Write a SQL query to retrieve specific information from a relational database. The schema will be provided.
+
+Since the schema is provided, I simply take an example on my own and wrote the SQL query of that. I have also sent a mail regarding this.
+
+Let's assume we have a simple schema for a library database with two tables: 'books' and 'authors'. 
+The book's table contains information about books, and the author's table contains information about the authors of those books. Each book can have one author, and each author can have multiple books. Here's an SQL query to retrieve specific information from this database:
+
+SELECT b.title, a.name
+FROM books b
+JOIN authors a ON b.author_id = a.author_id
+WHERE b.published_year = 2022
+
+In this query, we're selecting the 'title' column from the 'books' table and the name column from the 'authors' table. We use the 'JOIN' keyword to join the two tables based on the 'author_id' column. The 'ON' clause specifies the condition for the join. Finally, we add a 'WHERE' clause to filter the results and retrieve books that were published in the year 2022.

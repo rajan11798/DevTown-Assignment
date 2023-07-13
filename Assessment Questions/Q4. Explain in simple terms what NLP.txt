@@ -1,0 +1,19 @@
+Q4. Explain in simple terms what Natural Language Processing (NLP) is and its real-world applications.
+
+NLP is the technology or a field of study in AI that is used by machines to understand, analyse, manipulate, and interpret human languages. It helps developers to organize knowledge for performing tasks such as translation, automatic summarization, Named Entity Recognition (NER), speech recognition, relationship extraction, and topic segmentation.
+In simpler terms, NLP helps computers understand and communicate with people in a way that feels natural, similar to how we humans understand and communicate with each other using language.
+
+NLP has several real-world applications:
+1. Virtual Assistants: Virtual assistants like Siri, Alexa, or Google Assistant use NLP to understand and respond to voice commands, helping us perform tasks like setting reminders, finding information, playing music or calling someone.
+
+2. Machine Translation: NLP is used in tools like Google Translate to automatically translate text or speech from one language to another, making it easier for people to communicate across different languages.
+
+3. Sentiment Analysis: Companies use NLP to analyze customer feedback, reviews, and social media posts to understand people's opinions and sentiments about their products or services. This helps them improve their offerings based on customer feedback.
+
+4. Text Summarization: NLP can automatically summarize long texts or articles, providing concise and informative summaries that save time and make it easier to understand the main points. Right now this is a hot topic for NLP researchers.
+
+5. Chatbots: NLP powers chatbots that can interact with users, answer their questions, and provide assistance. They are commonly used on websites, social media platforms, and customer service portals to provide automated support. And based on the reviews that they get, they can improve their services.
+
+6. Information Extraction: NLP techniques are used to extract relevant information from large amounts of text, such as news articles or scientific papers. This helps researchers, journalists, and businesses gather insights and make informed decisions. This type of NLP research with modern deep learning techniques gives us more fruitful results.
+
+7. Speech Recognition: NLP is used in speech recognition systems, such as voice dictation software or voice-controlled devices, to convert spoken words into text. This makes daily life very easy, you can operate various devices and systems of your home just with your voice.
